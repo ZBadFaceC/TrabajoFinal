@@ -1,0 +1,46 @@
+{% extends 'Entregable1App/base.html' %}
+
+{% block tituloPagina %}
+Clientes - Canchas Max
+{% endblock %}
+
+{% block contenidopagina %}
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <h1>Nuestros Clientes:</h1>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-12">
+                <form class="d-flex my-2 my-lg-0" action="" method="post">
+                    {% csrf_token %}
+                    <input class="flex-grow-0 form-control mr-sm-2" type="search" name="search" placeholder="Buscar por tipo/tamaño" aria-label="Search">
+                    <button class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" type="submit"> <i class="bi bi-search"></i> Buscar</button>
+                    <a class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" href="{% url 'crear_clientes' %}"> <i class="bi bi-plus-lg"></i> Crear Clientes</a>
+                </form>
+            </div>
+        </div>
+        <br>
+        <h4>Resultados
+            {% if search %}
+                para "{{busqueda}}":
+            {% else %}
+                totales:
+            {% endif %}
+        </h4>
+        <br>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-10 table-responsive">
+                <table class="table table-theme">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

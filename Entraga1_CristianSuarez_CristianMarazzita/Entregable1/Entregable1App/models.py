@@ -11,7 +11,7 @@ class Cancha(models.Model):
 class Cliente(models.Model):
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    mail = models.EmailField()
+    email = models.EmailField(blank=True, null=True)
     
 class Deporte(models.Model):
     tipo = models.CharField(max_length=30)
