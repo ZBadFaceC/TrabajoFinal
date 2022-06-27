@@ -38,6 +38,15 @@ Canchas - Canchas Max
                             <th scope="col">Tamaño</th>
                         </tr>
                     </thead>
+                    <tbody> 
+                        {% for cancha in canchas %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{cancha.tipo}}</td>
+                                <td>{{cancha.tamaño}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>

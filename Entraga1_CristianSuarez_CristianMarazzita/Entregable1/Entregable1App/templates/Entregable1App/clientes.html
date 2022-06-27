@@ -38,6 +38,15 @@ Clientes - Canchas Max
                             <th scope="col">Apellido</th>
                         </tr>
                     </thead>
+                    <tbody> 
+                        {% for cliente in clientes %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{cliente.nombre}}</td>
+                                <td>{{cliente.apellido}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>

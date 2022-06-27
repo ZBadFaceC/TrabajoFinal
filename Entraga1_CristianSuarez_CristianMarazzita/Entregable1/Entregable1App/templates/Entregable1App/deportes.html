@@ -39,6 +39,16 @@ Deportes - Canchas Max
                             <th scope="col">Costo</th>
                         </tr>
                     </thead>
+                    <tbody> 
+                        {% for deporte in deportes %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{deporte.tipo}}</td>
+                                <td>{{deporte.profesor}}</td>
+                                <td>{{deporte.costo}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
         </div>
