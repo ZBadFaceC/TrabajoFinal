@@ -24,7 +24,7 @@ def canchas(request):
 
     canchas = Cancha.objects.all()
 
-    return render(request,"Entregable1App/canchas.html",{"canchas":canchas})
+    return render(request,"Entregable1App/canchas.html",{"canchas":canchas, "search":False})
 
 def clientes(request):
 
@@ -39,7 +39,7 @@ def clientes(request):
 
     clientes = Cliente.objects.all()
 
-    return render(request,"Entregable1App/clientes.html",{"clientes":clientes})
+    return render(request,"Entregable1App/clientes.html",{"clientes":clientes, "search":False})
 
 def deportes(request):
 
@@ -54,7 +54,7 @@ def deportes(request):
 
     deportes = Deporte.objects.all()
 
-    return render(request,"Entregable1App/deportes.html",{"deportes":deportes})
+    return render(request,"Entregable1App/deportes.html",{"deportes":deportes, "search":False})
 
 def crear_canchas(request):
     
