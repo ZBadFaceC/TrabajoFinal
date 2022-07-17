@@ -3,6 +3,9 @@ from .models import *
 from .models import *
 from .forms import *
 from django.db.models import Q
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from .forms import *
+from django.contrib.auth import login, logout, authenticate
 
 
 # Create your views here.
@@ -10,6 +13,30 @@ from django.db.models import Q
 def inicio(request):
       
     return render(request, r"Entregable1App\index.html",{})
+
+def login_request(request):
+
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect("inicio")
+            else:
+                return redirect("login")
+        else:
+            return redirect("login")
+    
+    form = AuthenticationForm()
+
+    return render(request,"ProyectoCoderApp/login.html",{"form":form})
 
 def canchas(request):
 

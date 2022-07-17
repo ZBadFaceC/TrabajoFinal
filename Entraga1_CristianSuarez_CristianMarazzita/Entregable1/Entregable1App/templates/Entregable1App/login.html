@@ -1,0 +1,18 @@
+{% extends 'Entregable1App/base.html' %}
+
+{% block tituloPagina %}
+Inicio - Canchas Max
+{% endblock %}
+
+{% block contenidopagina %}
+    <section class="bg-light py-5">
+        <div class="container px-5">
+            <h1>Inicia Sesión</h1>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

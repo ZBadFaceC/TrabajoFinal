@@ -10,4 +10,7 @@ urlpatterns = [
     path('crear_deportes', crear_deportes, name="crear_deportes"),
     path('crear_canchas', crear_canchas, name="crear_canchas"),
     path('crear_clientes', crear_clientes, name="crear_clientes"),
+    path('login', login_request, name="login"),
+    # path('register', register_request, name="register"),
+    # path('logout', logout_request, name="logout"),
 ]
