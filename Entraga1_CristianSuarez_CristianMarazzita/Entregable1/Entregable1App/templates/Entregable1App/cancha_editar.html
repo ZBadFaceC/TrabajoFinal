@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles Cancha</title>
+</head>
+<body>
+    <h2>Detalle Cancha:</h2>
+    <p>Tipo: {{cancha.tipo}}</p>
+    <p>Tamaño: {{cancha.tamaño}}</p>
+    <p>Costo: {{cancha.costo}}</p>
+    <p>Horario: {{cancha.horario}}</p>
+    <a href="{% url 'cancha_list' %}">Regresar a lista canchas</a>
+</body>
+</html>

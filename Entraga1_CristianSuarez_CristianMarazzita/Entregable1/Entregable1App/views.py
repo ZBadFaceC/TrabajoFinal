@@ -104,14 +104,14 @@ def crear_canchas(request):
     formulario = CanchasFormulario()
     return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
 
-def eliminar_canchas(request,canchas_id):
+def eliminar_cancha(request,canchas_id):
 
     canchas = canchas.objects.get(id=canchas_id)
     canchas.delete()
 
     return redirect("canchas")
 
-def editar_canchas(request,canchas_id):
+def editar_cancha(request,canchas_id):
 
     canchas = canchas.objects.get(id=canchas_id)
 

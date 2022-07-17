@@ -46,8 +46,8 @@ Canchas - Canchas Max
                                 <td>{{cancha.tipo}}</td>
                                 <td>{{cancha.tamaño}}</td>
                                 <td>
-                                    <a href="{% url 'editar_estudiante' estudiante.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
-                                    <a href="{% url 'eliminar_estudiante' estudiante.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                    <a href="{% url 'editar_cancha' cancha.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="{% url 'eliminar_cancha' cancha.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
                                 </td>
                             </tr>
                         {% endfor %}
