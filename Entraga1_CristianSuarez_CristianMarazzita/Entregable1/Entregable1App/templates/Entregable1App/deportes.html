@@ -46,6 +46,10 @@ Deportes - Canchas Max
                                 <td>{{deporte.tipo}}</td>
                                 <td>{{deporte.profesor}}</td>
                                 <td>{{deporte.costo}}</td>
+                                <td>
+                                    <a href="{% url 'editar_deporte' deporte.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="{% url 'eliminar_deporte' deporte.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -15,7 +15,11 @@ urlpatterns = [
     
     path('clientes', clientes, name="clientes"),
     path('crear_clientes', crear_clientes, name="crear_clientes"),
+    path('eliminar_cliente/<cliente_id>', eliminar_cliente, name="eliminar_cliente"),
+    path('editar_cliente/<cliente_id>', editar_cliente, name="editar_cliente"),
     
     path('deportes', deportes, name="deportes"),
-    path('crear_deportes', crear_deportes, name="crear_deportes"),    
+    path('crear_deportes', crear_deportes, name="crear_deportes"),
+    path('eliminar_deporte/<deporte_id>', eliminar_deporte, name="eliminar_deporte"),
+    path('editar_deporte/<deporte_id>', editar_deporte, name="editar_deporte"),
 ]

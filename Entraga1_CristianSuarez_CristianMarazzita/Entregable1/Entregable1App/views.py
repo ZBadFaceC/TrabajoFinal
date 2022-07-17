@@ -68,6 +68,8 @@ def logout_request(request):
     logout(request)
     return redirect("inicio")
 
+
+
 def canchas(request):
 
     if request.method == "POST":
@@ -104,16 +106,16 @@ def crear_canchas(request):
     formulario = CanchasFormulario()
     return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
 
-def eliminar_cancha(request,canchas_id):
+def eliminar_cancha(request,cancha_id):
 
-    canchas = canchas.objects.get(id=canchas_id)
-    canchas.delete()
+    cancha = Cancha.objects.get(id=cancha_id)
+    cancha.delete()
 
     return redirect("canchas")
 
-def editar_cancha(request,canchas_id):
+def editar_cancha(request,cancha_id):
 
-    canchas = canchas.objects.get(id=canchas_id)
+    cancha = Cancha.objects.get(id=cancha_id)
 
     if request.method == "POST":
 
@@ -121,19 +123,21 @@ def editar_cancha(request,canchas_id):
 
         if formulario.is_valid():
             
-            info_canchas = formulario.cleaned_data
+            info_cancha = formulario.cleaned_data
             
-            canchas.tipo = info_canchas["tipo"]
-            canchas.tamaño = info_canchas["tamaño"]
-            canchas.costo = info_canchas["costo"]
-            canchas.horario = info_canchas["horario"]
-            canchas.save()
+            cancha.tipo = info_cancha["tipo"]
+            cancha.tamaño = info_cancha["tamaño"]
+            cancha.costo = info_cancha["costo"]
+            cancha.horario = info_cancha["horario"]
+            cancha.save()
 
             return redirect("canchas")
         
-    formulario = canchasFormulario(initial={"nombre":canchas.nombre, "apellido":canchas.apellido, "email": canchas.email})
+    formulario = CanchasFormulario(initial={"tipo":cancha.tipo, "tamaño":cancha.tamaño, "costo": cancha.costo, "horario":cancha.horario})
     
     return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
+
+
 
 def clientes(request):
 
@@ -149,21 +153,6 @@ def clientes(request):
     clientes = Cliente.objects.all()
 
     return render(request,"Entregable1App/clientes.html",{"clientes":clientes, "search":False})
-
-def deportes(request):
-
-    if request.method == "POST":
-
-        search = request.POST["search"]
-
-        if search != "":
-            deportes = Deporte.objects.filter( Q(tipo__icontains=search) | Q(costo__icontains=search) ).values()
-
-            return render(request,"Entregable1App/deportes.html",{"deportes":deportes, "search":True, "busqueda":search})
-
-    deportes = Deporte.objects.all()
-
-    return render(request,"Entregable1App/deportes.html",{"deportes":deportes, "search":False})
 
 def crear_clientes(request):
     
@@ -187,6 +176,51 @@ def crear_clientes(request):
     formulario = ClientesFormulario()
     return render(request,"Entregable1App/formulario_clientes.html",{"form":formulario})
 
+def eliminar_cliente(request,cliente_id):
+
+    cliente = Cliente.objects.get(id=cliente_id)
+    cliente.delete()
+
+    return redirect("clientes")
+
+def editar_cliente(request,cliente_id):
+
+    cliente = Cliente.objects.get(id=cliente_id)
+
+    if request.method == "POST":
+
+        formulario = ClientesFormulario(request.POST)
+
+        if formulario.is_valid():
+                
+            info_cliente = formulario.cleaned_data
+                
+            cliente.nombre = info_cliente["nombre"]
+            cliente.apellido = info_cliente["apellido"]
+            cliente.email = info_cliente["email"]
+            cliente.save()
+
+            return redirect("clientes")
+    formulario = ClientesFormulario(initial={"nombre":cliente.nombre, "apellido":cliente.apellido, "email": cliente.email})
+        
+    return render(request,"Entregable1App/formulario_clientes.html",{"form":formulario})
+
+
+def deportes(request):
+
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            deportes = Deporte.objects.filter( Q(tipo__icontains=search) | Q(costo__icontains=search) ).values()
+
+            return render(request,"Entregable1App/deportes.html",{"deportes":deportes, "search":True, "busqueda":search})
+
+    deportes = Deporte.objects.all()
+
+    return render(request,"Entregable1App/deportes.html",{"deportes":deportes, "search":False})
+
 def crear_deportes(request):
     
     # post
@@ -208,3 +242,33 @@ def crear_deportes(request):
     # get
     formulario = DeportesFormulario()
     return render(request,"Entregable1App/formulario_deportes.html",{"form":formulario})
+
+def eliminar_deporte(request,deporte_id):
+
+    deporte = Deporte.objects.get(id=deporte_id)
+    deporte.delete()
+
+    return redirect("deportes")
+
+def editar_deporte(request,deporte_id):
+
+    deporte = Deporte.objects.get(id=deporte_id)
+
+    if request.method == "POST":
+
+        formulario = DeportesFormulario(request.POST)
+
+        if formulario.is_valid():
+            
+            info_deporte = formulario.cleaned_data
+            
+            deporte.tipo = info_deporte["tipo"]
+            deporte.profesor = info_deporte["profesor"]
+            deporte.costo = info_deporte["costo"]
+            deporte.save()
+
+            return redirect("deportes")
+        
+    formulario = DeportesFormulario(initial={"tipo":deporte.tipo, "profesor":deporte.profesor, "costo": deporte.costo})
+    
+    return render(request,"Entregable1App/formulario_Deportes.html",{"form":formulario})
