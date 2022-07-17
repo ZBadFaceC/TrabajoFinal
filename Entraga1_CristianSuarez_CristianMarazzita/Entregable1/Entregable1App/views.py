@@ -36,7 +36,37 @@ def login_request(request):
     
     form = AuthenticationForm()
 
-    return render(request,"ProyectoCoderApp/login.html",{"form":form})
+    return render(request,"Entregable1App/login.html",{"form":form})
+
+def register_request(request):
+
+    if request.method == "POST":
+        
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password1')
+
+            form.save() 
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect("inicio")
+            else:
+                return redirect("login")
+
+        return render(request,"Entregable1App/register.html",{"form":form})
+
+    form = UserCreationForm()
+
+    return render(request,"Entregable1App/register.html",{"form":form})
+
+def logout_request(request):
+    logout(request)
+    return redirect("inicio")
 
 def canchas(request):
 
