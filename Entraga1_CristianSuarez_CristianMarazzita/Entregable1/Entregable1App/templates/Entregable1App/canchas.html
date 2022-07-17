@@ -36,6 +36,7 @@ Canchas - Canchas Max
                             <th scope="col">#</th>
                             <th scope="col">Tipo</th>
                             <th scope="col">Tamaño</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <tbody> 
@@ -44,6 +45,10 @@ Canchas - Canchas Max
                                 <th scope="row">{{forloop.counter}}</th>
                                 <td>{{cancha.tipo}}</td>
                                 <td>{{cancha.tamaño}}</td>
+                                <td>
+                                    <a href="{% url 'editar_estudiante' estudiante.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="{% url 'eliminar_estudiante' estudiante.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>

@@ -83,6 +83,58 @@ def canchas(request):
 
     return render(request,"Entregable1App/canchas.html",{"canchas":canchas, "search":False})
 
+def crear_canchas(request):
+    
+    if request.method == "POST":
+        
+        formulario = CanchasFormulario(request.POST)
+
+        if formulario.is_valid():
+            
+            info = formulario.cleaned_data
+
+            cancha = Cancha(tipo=info["tipo"],tamaño=info["tamaño"],costo=info["costo"], horario=info["horario"])
+            cancha.save()
+
+            return redirect("canchas")
+
+        return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
+
+    # get
+    formulario = CanchasFormulario()
+    return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
+
+def eliminar_canchas(request,canchas_id):
+
+    canchas = canchas.objects.get(id=canchas_id)
+    canchas.delete()
+
+    return redirect("canchas")
+
+def editar_canchas(request,canchas_id):
+
+    canchas = canchas.objects.get(id=canchas_id)
+
+    if request.method == "POST":
+
+        formulario = CanchasFormulario(request.POST)
+
+        if formulario.is_valid():
+            
+            info_canchas = formulario.cleaned_data
+            
+            canchas.tipo = info_canchas["tipo"]
+            canchas.tamaño = info_canchas["tamaño"]
+            canchas.costo = info_canchas["costo"]
+            canchas.horario = info_canchas["horario"]
+            canchas.save()
+
+            return redirect("canchas")
+        
+    formulario = canchasFormulario(initial={"nombre":canchas.nombre, "apellido":canchas.apellido, "email": canchas.email})
+    
+    return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
+
 def clientes(request):
 
     if request.method == "POST":
@@ -112,28 +164,6 @@ def deportes(request):
     deportes = Deporte.objects.all()
 
     return render(request,"Entregable1App/deportes.html",{"deportes":deportes, "search":False})
-
-def crear_canchas(request):
-    
-    # post
-    if request.method == "POST":
-        
-        formulario = CanchasFormulario(request.POST)
-
-        if formulario.is_valid():
-            
-            info = formulario.cleaned_data
-
-            cancha = Cancha(tipo=info["tipo"],tamaño=info["tamaño"],costo=info["costo"], horario=info["horario"])
-            cancha.save()
-
-            return redirect("canchas")
-
-        return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
-
-    # get
-    formulario = CanchasFormulario()
-    return render(request,"Entregable1App/formulario_canchas.html",{"form":formulario})
 
 def crear_clientes(request):
     
