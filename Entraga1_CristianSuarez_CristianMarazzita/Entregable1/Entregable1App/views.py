@@ -1,10 +1,8 @@
 from django.shortcuts import redirect, render
 from .models import *
-from .models import *
 from .forms import *
 from django.db.models import Q
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from .forms import *
 from django.contrib.auth import login, logout, authenticate
 
 
