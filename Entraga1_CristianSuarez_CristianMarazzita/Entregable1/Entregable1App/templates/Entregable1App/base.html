@@ -28,6 +28,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'canchas' %}">Canchas</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'clientes' %}">Clientes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'deportes' %}">Deportes</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'acercade' %}">Nosotros</a></li>
                     {% if user.is_authenticated %}
                         <img class="rounded" src="{{url}}" alt="" srcset="" style="height: 40px;">
                         <li class="nav-item"><p class="text-light my-2 mx-2">  Hola, <b>{{user.username}}</b>!</p></li>

@@ -22,4 +22,6 @@ urlpatterns = [
     path('crear_deportes', crear_deportes, name="crear_deportes"),
     path('eliminar_deporte/<deporte_id>', eliminar_deporte, name="eliminar_deporte"),
     path('editar_deporte/<deporte_id>', editar_deporte, name="editar_deporte"),
+    
+    path('acercade', acercade, name="acercade"),
 ]

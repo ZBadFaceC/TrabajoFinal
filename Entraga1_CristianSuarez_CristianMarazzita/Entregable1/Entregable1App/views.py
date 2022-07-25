@@ -284,3 +284,7 @@ def editar_deporte(request,deporte_id):
     formulario = DeportesFormulario(initial={"tipo":deporte.tipo, "profesor":deporte.profesor, "costo": deporte.costo})
     
     return render(request,"Entregable1App/formulario_Deportes.html",{"form":formulario})
+
+def acercade(request):
+    
+    return render(request,"Entregable1App/acercade.html",{})
