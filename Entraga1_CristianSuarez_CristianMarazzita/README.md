@@ -26,6 +26,22 @@ Descarga en el siguiente link:
 
 9.- Ya queda registro del evento
 
+url
+
+http://127.0.0.1:8000/entregableapp/login
+
+http://127.0.0.1:8000/entregableapp/clientes
+
+
+Marazzita, se encargo de los Avatar para el usuario, se añade la opcion de agregar uno o se deja un predeterminado, asi mismo puede editarse desde el panel administrativo, tambien la foto de portada. Video y edicion del mismo. Colaboracion con Suarez para lograr la idea que el tuvo y codeando la pagina en Meat los 2 juntos en su inicio
+
+Suarez se encargo de la idea original y de darle formato al mismo añadiendo las pestañas principales y dandole formato al inicio, Luego con Marazzita se logra terminar de corregir algunos codigos para el correcto funcionamiento con el que hoy cuenta la pagina.
+
+
+
+Link del Video sobre el proyecto
+
+https://youtu.be/IJHtmheUTVA
 
 
 
