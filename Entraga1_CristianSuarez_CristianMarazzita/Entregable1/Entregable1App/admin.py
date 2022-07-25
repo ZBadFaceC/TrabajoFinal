@@ -22,3 +22,6 @@ class DeporteAdmin(admin.ModelAdmin):
 admin.site.register(Cancha, CanchaAdmin)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Deporte, DeporteAdmin)
+
+
+admin.site.register(Avatar)

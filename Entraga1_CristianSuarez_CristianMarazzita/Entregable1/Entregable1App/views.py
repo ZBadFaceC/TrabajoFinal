@@ -10,7 +10,17 @@ from django.contrib.auth import login, logout, authenticate
 
 def inicio(request):
       
+    if request.user.is_authenticated:
+        try:
+            avatar = Avatar.objects.get(usuario=request.user)
+            url = avatar.imagen.url
+        except:
+            url = "/media/avatar/generica.jpg"
+        return render(request, r"Entregable1App\index.html",{"url":url})
+      
+    
     return render(request, r"Entregable1App\index.html",{})
+
 
 def login_request(request):
 
@@ -23,7 +33,11 @@ def login_request(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=password)
-
+            try:
+                avatar = Avatar.objects.get(usuario=request.user)
+                url = avatar.imagen.url
+            except:
+                url = "/media/avatar/generica.jpg"
             if user is not None:
                 login(request, user)
                 return redirect("inicio")
